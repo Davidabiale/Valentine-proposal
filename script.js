@@ -9,7 +9,7 @@ var songplayer;   // For the "Yes" button song (Everything)
 var isYouTubeReady = false;
 
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player('youtube-player', {
+  mainplayer = new YT.Player('youtube-player', {
     height: '100%',
     width: '100%',
     videoId: 'nODwI0ogvuo', // Maroon 5 - Sugar
@@ -104,9 +104,9 @@ function showMessage(response) {
   if (playerContainer) {
     playerContainer.remove();
   }
-  if (songplayer && songplayer.stopVideo) {
-    songplayer.stopVideo();
-    songplayer.destroy();
+  if (mainplayer && mainplayer.stopVideo) {
+    mainplayer.stopVideo();
+    mainplayer.destroy();
   }
  var songContainer = document.createElement("div");
   songContainer.id = "youtube-song-container";
@@ -117,7 +117,7 @@ function showMessage(response) {
   document.body.appendChild(songContainer);
 
   // Create the YouTube player for your song
-  var songplayer = new YT.Player('youtube-song-container', {
+ songplayer = new YT.Player('youtube-song-container', {
     videoId: 'HXV5aZaBLDo', // <-- put your YouTube song ID here
     playerVars: {
       start: 10,
