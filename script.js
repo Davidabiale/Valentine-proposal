@@ -107,18 +107,31 @@ function showMessage(response) {
     player.stopVideo();
     player.destroy();
   }
+ var songContainer = document.createElement("div");
+  songContainer.id = "youtube-song-container";
+  songContainer.style.width = "1px";
+  songContainer.style.height = "1px";
+  songContainer.style.position = "fixed";
+  songContainer.style.top = "-9999px";
+  document.body.appendChild(songContainer);
 
-  // Create an audio element to play the sound
-  const audioElement = document.createElement("audio");
-  audioElement.src = "./Everything.mp4";
-  audioElement.preload = "auto";
-
-  audioElement.addEventListener("loadedmetadata", () => {
-    audioElement.currentTime = 10; // start at 0:10
-    audioElement.play().catch(e =>
-      console.error("Audio playback failed:", e)
-    );
+  // Create the YouTube player for your song
+  var songPlayer = new YT.Player('youtube-song-container', {
+    videoId: 'HXV5aZaBLDo', // <-- put your YouTube song ID here
+    playerVars: {
+      start; 10,
+      autoplay: 1,
+      controls: 0,
+      rel: 0,
+      mute: 0
+    },
+    events: {
+      'onReady': function(event) {
+        event.target.playVideo(); // play immediately
+      }
+    }
   });
+
 
   // Update the text content and image
   const yesMessage = document.getElementById("question");
