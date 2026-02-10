@@ -13,7 +13,7 @@ function onYouTubeIframeAPIReady() {
     width: '100%',
     videoId: 'nODwI0ogvuo', // Maroon 5 - Sugar
     playerVars: {
-      'start': 40,
+      'start':  0,
       'controls': 0,
       'autoplay': 1,
       'mute': 1, // Start muted to allow autoplay
