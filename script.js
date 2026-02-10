@@ -72,6 +72,7 @@ function showMessage(response) {
           document.getElementById('youtube-player-container').style.display = 'block';
           try {
             player.unMute();
+            player.seekTo(0);
             player.playVideo();
           } catch (e) {
             console.log("Autoplay blocked, user interaction needed");
