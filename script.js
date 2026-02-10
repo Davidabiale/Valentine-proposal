@@ -94,38 +94,42 @@ function showMessage(response) {
   }
 
   if (response === "Yes") {
-    // Remove the name message and the "No" button
-    document.getElementById("name").remove();
-    document.getElementById("no-button").remove();
+  // Remove the name message and the "No" button
+  document.getElementById("name").remove();
+  document.getElementById("no-button").remove();
 
-    // Stop and remove video player (YouTube or Local)
-    const playerContainer = document.getElementById('youtube-player-container');
-    if (playerContainer) {
-      playerContainer.remove();
-    }
-    if (player && player.stopVideo) {
-      player.stopVideo();
-      player.destroy();
-    }
-
-    // Create an audio element to play the sound
-    const audioElement = document.createElement("audio");
-    audioElement.src = "./Everything.mp4"; // Source of the sound
-    audioElement.preload = "auto"; // Preloading the audio
-    audioElement.addEventListener("loadedmetadata", () => {
-    audioElement.currentTime = 10;
-    audioElement.play() // Play the sound
-      .catch(e => console.error("Audio playback failed:", e)); // Catch and log playback errors
-
-    // Update the text content, display the message, and change the image to "dance.gif"
-    const yesMessage = document.getElementById("question");
-    yesMessage.textContent = "See you on the 14th my princess";
-    yesMessage.style.display = "block";
-    yesMessage.style.fontStyle = "normal";
-    document.getElementsByClassName("image")[0].src = "images/yey.jfif";
-
-    // Remove the "Yes" button
-    document.getElementById("yesButton").remove();
+  // Stop and remove video player
+  const playerContainer = document.getElementById('youtube-player-container');
+  if (playerContainer) {
+    playerContainer.remove();
   }
+  if (player && player.stopVideo) {
+    player.stopVideo();
+    player.destroy();
+  }
+
+  // Create an audio element to play the sound
+  const audioElement = document.createElement("audio");
+  audioElement.src = "./Everything.mp4";
+  audioElement.preload = "auto";
+
+  audioElement.addEventListener("loadedmetadata", () => {
+    audioElement.currentTime = 10; // start at 0:10
+    audioElement.play().catch(e =>
+      console.error("Audio playback failed:", e)
+    );
+  });
+
+  // Update the text content and image
+  const yesMessage = document.getElementById("question");
+  yesMessage.textContent = "See you on the 14th my princess";
+  yesMessage.style.display = "block";
+  yesMessage.style.fontStyle = "normal";
+
+  document.getElementsByClassName("image")[0].src = "images/yey.jfif";
+
+  // Remove the "Yes" button
+  document.getElementById("yesButton").remove();
+}
 
 }
