@@ -94,6 +94,8 @@ noButton.addEventListener("mouseover", handleNoInteraction);
 
 // Works on Phone
 noButton.addEventListener("touchstart", handleNoInteraction);
+
+}    
   // Stop and remove video player
   const playerContainer = document.getElementById('youtube-player-container');
   if (playerContainer) {
