@@ -67,7 +67,7 @@ function showMessage(response) {
     document.getElementById("name").style.display = "none";
 
     // Add a mouseover event listener to the "No" button
-    noButton.addEventListener("mouseover", () => {
+    noButton.addEventListener("touchstart", () => {
       if (!videoPlayed) {
         if (isYouTubeReady && mainplayer) {
           document.getElementById('youtube-player-container').style.display = 'block';
