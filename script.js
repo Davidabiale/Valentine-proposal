@@ -13,7 +13,7 @@ function onYouTubeIframeAPIReady() {
     width: '100%',
     videoId: 'nODwI0ogvuo', // Maroon 5 - Sugar
     playerVars: {
-      'start': 0,
+      'start': 52,
       'controls': 0,
       'autoplay': 1,
       'mute': 1, // Start muted to allow autoplay
@@ -112,6 +112,8 @@ function showMessage(response) {
     const audioElement = document.createElement("audio");
     audioElement.src = "./Everything.mp4"; // Source of the sound
     audioElement.preload = "auto"; // Preloading the audio
+    audioElement.addEventListener("loadedmetadata", () => {
+    audioElement.currentTime = 10;
     audioElement.play() // Play the sound
       .catch(e => console.error("Audio playback failed:", e)); // Catch and log playback errors
 
