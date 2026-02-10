@@ -4,7 +4,8 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
+var mainplayer;   // For the "No" button video (Maroon 5)
+var songplayer;   // For the "Yes" button song (Everything)
 var isYouTubeReady = false;
 
 function onYouTubeIframeAPIReady() {
@@ -68,11 +69,11 @@ function showMessage(response) {
     // Add a mouseover event listener to the "No" button
     noButton.addEventListener("mouseover", () => {
       if (!videoPlayed) {
-        if (isYouTubeReady && player) {
+        if (isYouTubeReady && mainplayer) {
           document.getElementById('youtube-player-container').style.display = 'block';
           try {
-            player.unMute();
-            player.playVideo();
+            mainplayer.unMute();
+            mainplayer.playVideo();
           } catch (e) {
             console.log("Autoplay blocked, user interaction needed");
           }
@@ -103,9 +104,9 @@ function showMessage(response) {
   if (playerContainer) {
     playerContainer.remove();
   }
-  if (player && player.stopVideo) {
-    player.stopVideo();
-    player.destroy();
+  if (songplayer && songplayer.stopVideo) {
+    songplayer.stopVideo();
+    songplayer.destroy();
   }
  var songContainer = document.createElement("div");
   songContainer.id = "youtube-song-container";
@@ -116,7 +117,7 @@ function showMessage(response) {
   document.body.appendChild(songContainer);
 
   // Create the YouTube player for your song
-  var songPlayer = new YT.Player('youtube-song-container', {
+  var songplayer = new YT.Player('youtube-song-container', {
     videoId: 'HXV5aZaBLDo', // <-- put your YouTube song ID here
     playerVars: {
       start: 10,
