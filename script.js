@@ -13,7 +13,7 @@ function onYouTubeIframeAPIReady() {
     width: '100%',
     videoId: 'nODwI0ogvuo', // Maroon 5 - Sugar
     playerVars: {
-      'start':  0,
+      'start': 52,
       'controls': 0,
       'autoplay': 1,
       'mute': 1, // Start muted to allow autoplay
@@ -67,12 +67,11 @@ function showMessage(response) {
 
     // Add a mouseover event listener to the "No" button
     noButton.addEventListener("mouseover", () => {
-      if (!videoPlayed) {
         if (isYouTubeReady && player) {
           document.getElementById('youtube-player-container').style.display = 'block';
           try {
             player.unMute();
-            player.seekTo(0);
+            player.seekTo(52, true);
             player.playVideo();
           } catch (e) {
             console.log("Autoplay blocked, user interaction needed");
