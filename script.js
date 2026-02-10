@@ -67,38 +67,33 @@ function showMessage(response) {
     document.getElementById("name").style.display = "none";
 
     // Add a mouseover event listener to the "No" button
-    noButton.addEventListener("touchstart", () => {
-      if (!videoPlayed) {
-        if (isYouTubeReady && mainplayer) {
-          document.getElementById('youtube-player-container').style.display = 'block';
-          try {
-            mainplayer.unMute();
-            mainplayer.playVideo();
-          } catch (e) {
-            console.log("Autoplay blocked, user interaction needed");
-          }
-        }
-
-        // Set the flag to true after playing the video
-        videoPlayed = true;
+   function handleNoInteraction() {
+  if (!videoPlayed) {
+    if (isYouTubeReady && mainplayer) {
+      document.getElementById('youtube-player-container').style.display = 'block';
+      try {
+        mainplayer.unMute();
+        mainplayer.playVideo();
+      } catch (e) {
+        console.log("Autoplay blocked, user interaction needed");
       }
-
-      // Generate new random coordinates when the button is hovered
-      const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
-      const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
-
-      noButton.style.zIndex = "100";
-      // Apply new coordinates to the button, causing it to move
-      noButton.style.left = randomX + "px";
-      noButton.style.top = randomY + "px";
-    });
+    }
+    videoPlayed = true;
   }
 
-  if (response === "Yes") {
-  // Remove the name message and the "No" button
-  document.getElementById("name").remove();
-  document.getElementById("no-button").remove();
+  const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+  const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
 
+  noButton.style.zIndex = "100";
+  noButton.style.left = randomX + "px";
+  noButton.style.top = randomY + "px";
+}
+
+// Works on PC
+noButton.addEventListener("mouseover", handleNoInteraction);
+
+// Works on Phone
+noButton.addEventListener("touchstart", handleNoInteraction);
   // Stop and remove video player
   const playerContainer = document.getElementById('youtube-player-container');
   if (playerContainer) {
