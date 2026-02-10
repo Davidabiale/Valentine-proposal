@@ -8,7 +8,7 @@ body {
   margin: 0;
   background: url("images/FINAL.jpg") repeat;
   font-size: 35px;
-  color: rgb(255, 0, 174);
+  color: #ffffff; 
 }
 .hh {
   -webkit-text-stroke: 2px #71004f;
