@@ -119,7 +119,7 @@ function showMessage(response) {
   var songPlayer = new YT.Player('youtube-song-container', {
     videoId: 'HXV5aZaBLDo', // <-- put your YouTube song ID here
     playerVars: {
-      start; 10,
+      start: 10,
       autoplay: 1,
       controls: 0,
       rel: 0,
