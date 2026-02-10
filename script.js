@@ -95,7 +95,11 @@ noButton.addEventListener("mouseover", handleNoInteraction);
 // Works on Phone
 noButton.addEventListener("touchstart", handleNoInteraction);
 
-}    
+}  
+   if (response === "Yes") {
+  // Remove the name message and the "No" button
+  document.getElementById("name").remove();
+  document.getElementById("no-button").remove();
   // Stop and remove video player
   const playerContainer = document.getElementById('youtube-player-container');
   if (playerContainer) {
