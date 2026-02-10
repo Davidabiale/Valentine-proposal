@@ -114,7 +114,7 @@ function showMessage(response) {
   audioElement.preload = "auto";
 
   audioElement.addEventListener("loadedmetadata", () => {
-    audioElement.currentTime = 8; // start at 0:10
+    audioElement.currentTime = 10; // start at 0:10
     audioElement.play().catch(e =>
       console.error("Audio playback failed:", e)
     );
